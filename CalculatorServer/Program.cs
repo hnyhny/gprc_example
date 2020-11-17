@@ -17,9 +17,9 @@ using System.Threading.Tasks;
 using Grpc.Core;
 using Helloworld;
 
-namespace GreeterServer
+namespace CalculatorServer
 {
-    class GreeterImpl : Greeter.GreeterBase
+    class CalculatorImpl : Calculator.CalculatorBase
     {
         // Server side handler of the SayHello RPC
         public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
@@ -51,12 +51,12 @@ namespace GreeterServer
         {
             Server server = new Server
             {
-                Services = { Greeter.BindService(new GreeterImpl()) },
+                Services = { Calculator.BindService(new CalculatorImpl()) },
                 Ports = { new ServerPort("localhost", Port, ServerCredentials.Insecure) }
             };
             server.Start();
 
-            Console.WriteLine("Greeter server listening on port " + Port);
+            Console.WriteLine("Calculator server listening on port " + Port);
             Console.WriteLine("Press any key to stop the server...");
             Console.ReadKey();
 

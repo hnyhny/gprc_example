@@ -16,7 +16,7 @@ using System;
 using Grpc.Core;
 using Helloworld;
 
-namespace GreeterClient
+namespace CalculatorClient
 {
     class Program
     {
@@ -24,8 +24,8 @@ namespace GreeterClient
         {
             Channel channel = new Channel("127.0.0.1:30051", ChannelCredentials.Insecure);
 
-            var client = new Greeter.GreeterClient(channel);
-            Console.WriteLine("Ein Simpler taschenrechner, der zwei werte entgegen nimmt und dann einen Operator auswählen lässt");
+            var client = new Calculator.CalculatorClient(channel);
+            Console.WriteLine("Ein Simpler taschenrechner, der zwei werte entgegen nimmt und dann einen Operator auswï¿½hlen lï¿½sst");
 
             Console.WriteLine("Erste Zahl:");
 
@@ -36,7 +36,7 @@ namespace GreeterClient
 
             TwoIntegerRequest request = new TwoIntegerRequest { LeftValue = leftValue, RightValue = rightValue };
 
-            Console.WriteLine("Operation auswählen: 1 für Addieren, 2 für Multiplizieren, 3 für Substrahieren");
+            Console.WriteLine("Operation auswï¿½hlen: 1 fï¿½r Addieren, 2 fï¿½r Multiplizieren, 3 fï¿½r Substrahieren");
             var operation = Convert.ToInt32(Console.ReadLine());
             SingleIntegerReply reply = operation switch
             {
